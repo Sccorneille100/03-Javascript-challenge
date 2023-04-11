@@ -12,7 +12,7 @@ function generatePassword(){
     alert("A number was not chosen, Please try again");
   } 
   else if(length < 8 || length > 128) {
-    alert("Must choose a number between 8 and 128.");
+    alert("Make sure it's a number between 8 and 128.");
   }
  else{
   break;
@@ -21,54 +21,45 @@ function generatePassword(){
   
   // asks the user what characters they want in their password
   var lower=true;
-  var upper = prompt("Would you like uppercase in your Password?");
+  var upper = confirm("Would you like uppercase in your Password?");
   var numb = confirm("Would you like numbers in your password?");
-  var spec = ("Would you like special characters in you password?");
+  var special = confirm("Would you like special characters in you password?");
 
-  // makes sure atleast one character is chosen
-  if(!lower && !upper && !numb && !spec) {
-    alert("You must have atleast 1 character type.")
-    return null;
-  }
+  // this would hold all the possible combination of letter numbers and char
+  var lowerCaseLetter = "abcdefghijklmnopqrstuvwxyz";
+  var upperCaseLetter = lowerCaseLetter.toUpperCase();
+  var specialLetter = "!@$#%?&*.,~";
+  var number = "1234567890";
+  var polis = "";
+  passwordText = "";
 
-  // my variables
-  var lowerLet = "abcdefghijklmnopqrstuvwxyz";
-  var upperLet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  var specLet = "!@$%?*."
-  var num = "1234567890";
-  var conf = ""
-  passwordText = ""
-
+ 
   // combines variables so all characters chosen can be used in the generated password
   if(lower) {
-    conf += lowerLet
-    passwordText += lowerLet.charAt(Math.floor(Math.random() * lowerLet.length))
-    console.log(conf);
+    polis   += lowerCaseLetter;
   }
 
   if(upper) {
-    conf += upperLet
-    passwordText += upperLet.charAt(Math.floor(Math.random() * upperLet.length));
-    console.log(conf);
+    polis   += lowerCaseLetter.toUpperCase();
   }
 
   if(numb) {
-    conf += num
-    passwordText += num.charAt(Math.floor(Math.random() * num.length))
-    console.log(conf);
+    polis   += number
+    passwordText += number.charAt(Math.floor(Math.random() * number.length))
+    console.log(polis  );
   }
 
-  if(spec) {
-    conf += specLet
-    passwordText += specLet.charAt(Math.floor(Math.random() * specLet.length));
-    console.log(conf);
+  if(special) {
+    polis   += specialLetter
+    passwordText += specialLetter.charAt(Math.floor(Math.random() * specialLetter.length));
   }
-  
+   console.log(passwordText);
   for(var i = passwordText.length; i < length; i++) {
-  passwordText += conf.charAt(Math.floor(Math.random() * conf.length))
+  passwordText += polis.charAt(Math.floor(Math.random() * polis.length))
 
   }
-  return passwordText
+ console.log (passwordText);
+  return passwordText;
 };
 
 // Write password to the #password input
@@ -79,7 +70,6 @@ function writePassword() {
   passwordText.value = password;
 
 }
-
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
