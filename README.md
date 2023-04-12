@@ -37,8 +37,7 @@ THEN the password is either displayed in an alert or written to the page
 ## Mock-Up
 
 The following image shows the web application's appearance and functionality:
-
-![The Password Generator application displays a red button to "Generate Password".](./Assets/03-javascript-homework-demo.png)
+![image](https://user-images.githubusercontent.com/127679758/231608558-2e6a4c0c-cc3d-4a6b-9377-d4b212788d47.png)
 
 ## Grading Requirements
 
